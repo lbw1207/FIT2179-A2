@@ -11,7 +11,7 @@
     "height": 300,
     "layer": [
         {
-            "data": {"url": "../data/73countries_malaysia.csv"},
+            "data": {"url": "data/73countries_malaysia.csv"},
             "transform": [
                 {"filter": "datum.snapshot_date == '2025-06-11'"},
                 {"calculate": "random() * 200 - 100", "as": "jitter"}
