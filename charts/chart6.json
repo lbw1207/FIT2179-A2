@@ -9,7 +9,7 @@
     },
     "width": 650,
     "height": 350,
-    "data": {"url": "../data/explicit_trend.csv"},
+    "data": {"url": "data/explicit_trend.csv"},
     "transform": [
         {"fold": ["explicit_pct", "clean_pct"], "as": ["type", "percentage"]}
     ],
