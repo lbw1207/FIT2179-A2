@@ -112,18 +112,23 @@
         {
             "data": {"url": "data/malaysia_highlights.csv"},
             "transform": [
-                {"filter": "datum.my_rank == 3"}
+            {"filter": "datum.my_rank <= 3"}
             ],
             "mark": {
                 "type": "text",
-                "dy": -40,
-                "fontSize": 10,
-                "fontWeight": "bold",
-                "color": "#1DB954"
+            "dy": -14,
+            "fontSize": 10,
+            "fontWeight": "bold",
+            "color": "#1DB954",
+            "align": "center",
+            "baseline": "bottom"
             },
             "encoding": {
-                "x": {"field": "popularity", "type": "quantitative"},
-                "y": {"datum": 0},
+                "x": {
+                    "field": "popularity",
+                    "type": "quantitative"
+                },
+                "y": {"datum": 0, "type": "quantitative"},
                 "text": {"field": "track_name", "type": "nominal"}
             }
         }
