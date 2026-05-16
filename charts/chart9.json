@@ -9,7 +9,7 @@
     },
     "width": 500,
     "height": 350,
-    "data": {"url": "../data/73countries_malaysia.csv"},
+    "data": {"url": "data/73countries_malaysia.csv"},
     "transform": [
         {
             "aggregate": [
