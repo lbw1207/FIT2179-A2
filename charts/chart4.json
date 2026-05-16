@@ -32,7 +32,7 @@
                 {
                     "lookup": "id",
                     "from": {
-                        "data": {"url": "../data/country_overlap.csv"},
+                        "data": {"url": "data/country_overlap.csv"},
                         "key": "country_id",
                         "fields": ["country_name", "avg_shared_songs", "country_code"]               
                     }
