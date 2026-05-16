@@ -41,7 +41,7 @@
             }
         },
         {
-            "data": {"url": "../data/malaysia_highlights.csv"},
+            "data": {"url": "data/malaysia_highlights.csv"},
             "transform": [
                 {"calculate": "random() * 60 - 30", "as": "jitter"}
             ],
