@@ -92,7 +92,7 @@
             }
         },
         {
-            "data": {"url": "../data/malaysia_highlights.csv"},
+            "data": {"url": "data/malaysia_highlights.csv"},
             "transform": [
                 {"filter": "datum.my_rank == 2"}
             ],
@@ -110,7 +110,7 @@
             }
         },
         {
-            "data": {"url": "../data/malaysia_highlights.csv"},
+            "data": {"url": "data/malaysia_highlights.csv"},
             "transform": [
                 {"filter": "datum.my_rank == 3"}
             ],
