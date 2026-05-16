@@ -7,7 +7,7 @@
         "subtitleFontSize": 12,
         "anchor": "start"
     },
-    "data": {"url": "../data/genre_audio.csv"},
+    "data": {"url": "data/genre_audio.csv"},
     "facet": {
         "field": "feature",
         "type": "nominal",
