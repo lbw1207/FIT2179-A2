@@ -9,7 +9,7 @@
     },
     "width": 400,
     "height": 350,
-    "data": {"url": "../data/rank_comparison.csv"},
+    "data": {"url": "data/rank_comparison.csv"},
     "layer": [
         {
             "mark": {
