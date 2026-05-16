@@ -9,7 +9,7 @@
     },
     "width": 600,
     "height": 400,
-    "data": {"url": "../data/malaysia_charts.csv"},
+    "data": {"url": "data/malaysia_charts.csv"},
     "transform": [
         {"filter": "datum.week_date == '2026-04-30'"},
         {"filter": "datum.rank <= 10"},
