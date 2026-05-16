@@ -1,0 +1,56 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": {
+        "text": "Local vs International Streams Each Week",
+        "subtitle": "Each circle = 1% of total streams. Green = Malaysian artists, Grey = International",
+        "fontSize": 16,
+        "subtitleFontSize": 12,
+        "anchor": "start"
+    },
+    "data": {"url": "../data/waffle_data.csv"},
+    "facet": {
+        "field": "week_date",
+        "type": "ordinal",
+        "title": "Week",
+        "columns": 2,
+        "header": {
+            "labelExpr": "timeFormat(toDate(datum.value), '%b %d')",
+            "labelFontSize": 12,
+            "labelFontWeight": "bold"
+        }
+    },
+    "spec": {
+        "width": 150,
+        "height": 150,
+        "mark": {"type": "point", "filled": true, "size": 40, "opacity": 0.9},
+        "encoding": {
+            "x": {
+                "field": "col",
+                "type": "quantitative",
+                "axis": null,
+                "scale": {"domain": [0, 11]}
+            },
+            "y": {
+                "field": "row",
+                "type": "quantitative",
+                "axis": null,
+                "scale": {"domain": [0, 11], "reverse": true}
+            },
+            "color": {
+                "field": "artist_type",
+                "type": "nominal",
+                "title": "Artist Type",
+                "scale": {
+                    "domain": ["Local", "International"],
+                    "range": ["#1DB954", "#535353"]
+                },
+                "legend": {"orient": "bottom", "direction": "horizontal"}
+            },
+            "tooltip": [
+                {"field": "week_date", "title": "Week"},
+                {"field": "local_pct", "title": "Local %"},
+                {"field": "artist_type", "title": "Type"}
+            ]
+        }
+    }
+}

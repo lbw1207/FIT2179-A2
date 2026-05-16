@@ -1,0 +1,267 @@
+:root {
+  /* Colours */
+  --colour-bg:         #0a0a0a;      /* near-black background */
+  --colour-surface:    #141414;      /* slightly lighter card background */
+  --colour-border:     #2a2a2a;      /* subtle border */
+  --colour-primary:    #1DB954;      /* Spotify green — your accent colour */
+  --colour-text:       #f0f0f0;      /* near-white main text */
+  --colour-muted:      #888888;      /* grey for captions and metadata */
+  --colour-heading:    #ffffff;      /* pure white for headings */
+
+  /* Typography */
+  --font-heading:      'Playfair Display', Georgia, serif;
+  --font-body:         'Inter', Arial, sans-serif;
+
+  /* Spacing */
+  --space-xs:   0.5rem;
+  --space-sm:   1rem;
+  --space-md:   2rem;
+  --space-lg:   4rem;
+  --space-xl:   6rem;
+
+  /* Layout */
+  --max-width:  1100px;
+  --radius:     8px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--colour-bg);
+  color: var(--colour-text);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Constrain all content to max width and centre it */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
+
+.hero {
+  background: linear-gradient(
+    135deg,
+    #0a0a0a 0%,
+    #0f2d1a 50%,
+    #0a0a0a 100%
+  );
+  padding: var(--space-xl) var(--space-md);
+  text-align: center;
+  border-bottom: 1px solid var(--colour-border);
+}
+
+.hero h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 900;
+  color: var(--colour-heading);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin-bottom: var(--space-sm);
+}
+
+.hero h1 span {
+  color: var(--colour-primary);
+}
+
+.hero .subtitle {
+  font-size: 1.15rem;
+  color: var(--colour-muted);
+  max-width: 600px;
+  margin: 0 auto var(--space-md);
+  line-height: 1.6;
+}
+
+.hero .meta {
+  font-size: 0.8rem;
+  color: var(--colour-muted);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.section {
+  padding: var(--space-lg) var(--space-md);
+  border-bottom: 1px solid var(--colour-border);
+}
+
+.section-header {
+  margin-bottom: var(--space-md);
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section-number {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--colour-primary);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-xs);
+}
+
+.section h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 700;
+  color: var(--colour-heading);
+  line-height: 1.2;
+  margin-bottom: var(--space-sm);
+}
+
+.section p {
+  font-size: 1rem;
+  color: var(--colour-text);
+  max-width: 680px;
+  line-height: 1.8;
+  margin-bottom: var(--space-sm);
+}
+
+.section p.caption {
+  font-size: 0.85rem;
+  color: var(--colour-muted);
+  font-style: italic;
+}
+
+.chart-card canvas,
+.chart-card svg {
+    max-width: 100% !important;
+    height: auto !important;
+}
+
+/* Also force vega embed containers to respect width */
+.vega-embed {
+    width: 100% !important;
+}
+
+.vega-embed canvas,
+.vega-embed svg {
+    max-width: 100% !important;
+}
+
+.chart-card {
+  background-color: var(--colour-surface);
+  border: 1px solid var(--colour-border);
+  border-radius: var(--radius);
+  padding: var(--space-md);
+  margin-bottom: var(--space-md);
+}
+
+.chart-title {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--colour-heading);
+  margin-bottom: var(--space-xs);
+}
+
+.chart-description {
+  font-size: 0.9rem;
+  color: var(--colour-muted);
+  margin-bottom: var(--space-sm);
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+/* Two charts side by side */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+  max-width: var(--max-width);
+  margin: 0 auto var(--space-md);
+}
+
+/* Single full-width chart */
+.grid-1 {
+  max-width: var(--max-width);
+  margin: 0 auto var(--space-md);
+}
+
+/* Stat highlight boxes (for key numbers) */
+.stat-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-sm);
+  max-width: var(--max-width);
+  margin: 0 auto var(--space-md);
+}
+
+.stat-box {
+  background-color: var(--colour-surface);
+  border: 1px solid var(--colour-border);
+  border-left: 3px solid var(--colour-primary);
+  border-radius: var(--radius);
+  padding: var(--space-sm) var(--space-md);
+}
+
+.stat-box .stat-number {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--colour-primary);
+  line-height: 1;
+  margin-bottom: var(--space-xs);
+}
+
+.stat-box .stat-label {
+  font-size: 0.85rem;
+  color: var(--colour-muted);
+  line-height: 1.4;
+}
+
+/* Responsive — stack on small screens */
+@media (max-width: 768px) {
+  .grid-2 { grid-template-columns: 1fr; }
+  .stat-row { grid-template-columns: 1fr; }
+}
+
+.footer {
+  padding: var(--space-lg) var(--space-md);
+  background-color: var(--colour-surface);
+  border-top: 1px solid var(--colour-border);
+}
+
+.footer-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+}
+
+.footer h4 {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--colour-primary);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-xs);
+}
+
+.footer p, .footer a {
+  font-size: 0.85rem;
+  color: var(--colour-muted);
+  line-height: 1.7;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  color: var(--colour-primary);
+}
+
+@media (max-width: 768px) {
+  .footer-inner { grid-template-columns: 1fr; }
+}

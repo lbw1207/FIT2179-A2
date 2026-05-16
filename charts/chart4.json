@@ -1,0 +1,69 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": {
+        "text": "Which Countries Share Malaysia's Music Taste?",
+        "subtitle": "Average number of daily top 10 songs shared with Malaysia. Darker = more overlap.",
+        "fontSize": 16,
+        "subtitleFontSize": 12,
+        "anchor": "start"
+    },
+    "width": 800,
+    "height": 450,
+    "projection": {"type": "equalEarth"},
+    "layer": [
+        {
+            "data": {
+                "url": "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json",
+                "format": {"type": "topojson", "feature": "countries"}
+            },
+            "mark": {
+                "type": "geoshape",
+                "fill": "#e0e0e0",
+                "stroke": "#ffffff",
+                "strokeWidth": 0.5
+            }
+        },
+        {
+            "data": {
+                "url": "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json",
+                "format": {"type": "topojson", "feature": "countries"}
+            },
+            "transform": [
+                {
+                    "lookup": "id",
+                    "from": {
+                        "data": {"url": "../data/country_overlap.csv"},
+                        "key": "country_id",
+                        "fields": ["country_name", "avg_shared_songs", "country_code"]               
+                    }
+                },
+                {"filter": "datum.avg_shared_songs != null"}
+            ],
+            "mark": {
+                "type": "geoshape",
+                "stroke": "#ffffff",
+                "strokeWidth": 0.5
+            },
+            "encoding": {
+                "color": {
+                    "field": "avg_shared_songs",
+                    "type": "quantitative",
+                    "title": "Shared Songs",
+                    "scale": {
+                        "scheme": "greens",
+                        "domain": [0, 10]
+                    },
+                    "legend": {
+                        "orient": "bottom-right",
+                        "gradientLength": 120,
+                        "title": "Avg. shared Songs"
+                    }
+                },
+                "tooltip": [
+                    {"field": "country_name", "title": "Country"},
+                    {"field": "avg_shared_songs", "title": "Avg. Shared Songs", "format": ".1f"}
+                ]
+            }
+        }
+    ]
+}

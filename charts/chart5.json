@@ -1,0 +1,89 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": {
+        "text": "Malaysian Favourites vs Global Hits",
+        "subtitle": "Left dot = rank in Malaysia. Right dot = average rank globally. Lines show the gap.",
+        "fontSize": 16,
+        "subtitleFontSize": 12,
+        "anchor": "start"
+    },
+    "width": 400,
+    "height": 350,
+    "data": {"url": "../data/rank_comparison.csv"},
+    "layer": [
+        {
+            "mark": {
+                "type": "rule",
+                "strokeWidth": 1.5,
+                "opacity": 0.4,
+                "color": "#aaaaaa"
+            },
+            "encoding": {
+                "y": {
+                    "field": "track_name",
+                    "type": "nominal",
+                    "sort": {"field": "my_rank", "order": "ascending"},
+                    "title": null
+                },
+                "x": {
+                    "field": "my_rank",
+                    "type": "quantitative"
+                },
+                "x2": {"field": "global_avg_rank"}
+            }
+        },
+        {
+            "mark": {
+                "type": "point",
+                "filled": true,
+                "size": 100,
+                "opacity": 1,
+                "color": "#1DB954"
+            },
+            "encoding": {
+                "y": {
+                    "field": "track_name",
+                    "type": "nominal",
+                    "sort": {"field": "my_rank", "order": "ascending"},
+                    "title": null
+                },
+                "x": {
+                    "field": "my_rank",
+                    "type": "quantitative",
+                    "title": "Chart Rank",
+                    "scale": {"domain": [0, 100]}
+                },
+                "tooltip": [
+                    {"field": "track_name", "title": "Song"},
+                    {"field": "my_rank", "title": "Malaysia Rank"},
+                    {"field": "global_avg_rank", "title": "Global Avg Rank", "format": ".1f"}
+                ]
+            }
+        },
+        {
+            "mark": {
+                "type": "point",
+                "filled": true,
+                "size": 100,
+                "opacity": 1,
+                "color": "#535353"
+            },
+            "encoding": {
+                "y": {
+                    "field": "track_name",
+                    "type": "nominal",
+                    "sort": {"field": "my_rank", "order": "ascending"}
+                },
+                "x": {
+                    "field": "global_avg_rank",
+                    "type": "quantitative"
+                },
+                "tooltip": [
+                    {"field": "track_name", "title": "Song"},
+                    {"field": "my_rank", "title": "Malaysia Rank"},
+                    {"field": "global_avg_rank", "title": "Global Avg Rank", "format": ".1f"}
+                ]
+            }
+        }
+    ]
+}

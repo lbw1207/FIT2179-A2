@@ -1,0 +1,93 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": {
+        "text": "Are Malaysian Charts Getting More Explicit?",
+        "subtitle": "Weekly share of explicit vs clean songs in Malaysia's Spotify Top 200",
+        "fontSize": 16,
+        "subtitleFontSize": 12,
+        "anchor": "start"
+    },
+    "width": 650,
+    "height": 350,
+    "data": {"url": "../data/explicit_trend.csv"},
+    "transform": [
+        {"fold": ["explicit_pct", "clean_pct"], "as": ["type", "percentage"]}
+    ],
+    "layer": [
+        {
+            "mark": {
+                "type": "area",
+                "opacity": 0.6
+            },
+            "encoding": {
+                "x": {
+                    "field": "week_date",
+                    "type": "temporal",
+                    "title": "Week",
+                    "axis": {"format": "%b %Y", "labelAngle": -30}
+                },
+                "y": {
+                    "field": "percentage",
+                    "type": "quantitative",
+                    "title": "Share of Top 200 (%)",
+                    "stack": "normalize",
+                    "axis": {"format": "%"}
+                },
+                "color": {
+                    "field": "type",
+                    "type": "nominal",
+                    "title": "Content Type",
+                    "scale": {
+                        "domain": ["explicit_pct", "clean_pct"],
+                        "range": ["#e15759", "#1DB954"]
+                    },
+                    "legend": {
+                        "labelExpr": "datum.label == 'explicit_pct' ? 'Explicit' : 'Clean'"
+                    }
+                },
+                "tooltip": [
+                    {"field": "week_date", "title": "Week", "type": "temporal", "format": "%b %d %Y"},
+                    {"field": "type", "title": "Type"},
+                    {"field": "percentage", "title": "Share (%)", "format": ".1f"}
+                ]
+            }
+        },
+        {
+            "transform": [
+                {
+                    "filter": "datum.week_date == '2025-06-11'"
+                }
+            ],
+            "mark": {
+                "type": "text",
+                "align": "left",
+                "dx": 5,
+                "fontSize": 11,
+                "fontWeight": "bold"
+            },
+            "encoding": {
+                "x": {
+                    "field": "week_date",
+                    "type": "temporal"
+                },
+                "y": {
+                    "field": "percentage",
+                    "type": "quantitative",
+                    "stack": "normalize"
+                },
+                "text": {
+                    "field": "type",
+                    "type": "nominal"
+                },
+                "color": {
+                    "field": "type",
+                    "type": "nominal",
+                    "scale": {
+                        "domain": ["explicit_pct", "clean_pct"],
+                        "range": ["#e15759", "#1DB954"]
+                    }
+                }
+            }
+        }
+    ]
+}

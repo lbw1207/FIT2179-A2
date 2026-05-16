@@ -1,0 +1,82 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": {
+        "text": "Malaysia's Musical DNA",
+        "subtitle": "Average audio profile of Malaysia's chart songs vs global hits. Scale: 0 (low) to 1 (high)",
+        "fontSize": 16,
+        "subtitleFontSize": 12,
+        "anchor": "start"
+    },
+    "width": 400,
+    "height": 400,
+    "data": {"url": "../data/audio_fingerprint.csv"},
+    "transform": [
+        {"fold": ["malaysia_avg", "global_avg"], "as": ["source", "value"]},
+        {"window": [{"op": "rank", "as": "order"}], "groupby": ["source"]},
+        {"calculate": "((datum.order - 1) % 4) / 4 * 2 * PI - PI / 2", "as": "angle"},
+        {"calculate": "datum.value * 1.8", "as": "scaled_value"},
+        {"calculate": "datum.scaled_value * cos(datum.angle)", "as": "x"},
+        {"calculate": "datum.scaled_value * sin(datum.angle)", "as": "y"},
+        {"calculate": "cos(datum.angle) * 1.7", "as": "label_x"},
+        {"calculate": "sin(datum.angle) * 1.7", "as": "label_y"}
+    ],
+    "layer": [
+        {
+            "mark": {"type": "line", "strokeWidth": 2.5, "opacity": 0.8},
+            "encoding": {
+                "x": {
+                    "field": "x",
+                    "type": "quantitative",
+                    "axis": null,
+                    "scale": {"domain": [-2.5, 2]}
+                },
+                "y": {
+                    "field": "y",
+                    "type": "quantitative",
+                    "axis": null,
+                    "scale": {"domain": [-2, 2]}
+                },
+                "color": {
+                    "field": "source",
+                    "type": "nominal",
+                    "title": "Source",
+                    "scale": {
+                        "domain": ["malaysia_avg", "global_avg"],
+                        "range": ["#1DB954", "#535353"]
+                    },
+                    "legend": {
+                        "labelExpr": "datum.label == 'malaysia_avg' ? 'Malaysia' : 'Global'"
+                    }
+                },
+                "detail": {"field": "source", "type": "nominal"},
+                "order": {"field": "order", "type": "quantitative"},
+                "tooltip": [
+                    {"field": "feature", "title": "Feature"},
+                    {"field": "value", "title": "Value", "format": ".2f"},
+                    {"field": "source", "title": "Source"}
+                ]
+            }
+        },
+        {
+            "transform": [
+                {"filter": "datum.source == 'malaysia_avg' && datum.order <= 4"}
+            ],
+            "mark": {"type": "text", "fontSize": 12, "fontWeight": "bold", "color": "#f0f0f0"},
+            "encoding": {
+                "x": {
+                    "field": "label_x",
+                    "type": "quantitative",
+                    "axis": null,
+                    "scale": {"domain": [-2.5, 2]}
+                },
+                "y": {
+                    "field": "label_y",
+                    "type": "quantitative",
+                    "axis": null,
+                    "scale": {"domain": [-2, 2]}
+                },
+                "text": {"field": "feature", "type": "nominal"}
+            }
+        }
+    ]
+}

@@ -1,0 +1,92 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": {
+        "text": "How Audio Features Relate to Each Other",
+        "subtitle": "Correlation between pairs of audio features across globally streamed songs. +1 = perfect positive, -1 = perfect negative.",
+        "fontSize": 16,
+        "subtitleFontSize": 12,
+        "anchor": "start"
+    },
+    "width": 450,
+    "height": 450,
+    "data": {"url": "../data/correlation_matrix.csv"},
+    "layer": [
+        {
+            "mark": "rect",
+            "encoding": {
+                "x": {
+                    "field": "feature_x",
+                    "type": "nominal",
+                    "title": null,
+                    "sort": ["Danceability","Energy","Valence","Acousticness","Speechiness","Tempo"],
+                    "axis": {
+                        "labelAngle": -30,
+                        "labelFontSize": 12,
+                        "domainOpacity": 0
+                    }
+                },
+                "y": {
+                    "field": "feature_y",
+                    "type": "nominal",
+                    "title": null,
+                    "sort": ["Danceability","Energy","Valence","Acousticness","Speechiness","Tempo"],
+                    "axis": {
+                        "labelFontSize": 12,
+                        "domainOpacity": 0
+                    }
+                },
+                "color": {
+                    "field": "correlation",
+                    "type": "quantitative",
+                    "title": "Correlation",
+                    "scale": {
+                        "scheme": "redblue",
+                        "domain": [-1, 1],
+                        "reverse": true
+                    },
+                    "legend": {
+                        "orient": "right",
+                        "gradientLength": 200,
+                        "title": "Correlation"
+                    }
+                },
+                "tooltip": [
+                    {"field": "feature_x", "title": "Feature A"},
+                    {"field": "feature_y", "title": "Feature B"},
+                    {"field": "correlation", "title": "Correlation", "format": ".2f"}
+                ]
+            }
+        },
+        {
+            "mark": {
+                "type": "text",
+                "fontSize": 12,
+                "fontWeight": "bold"
+            },
+            "encoding": {
+                "x": {
+                    "field": "feature_x",
+                    "type": "nominal",
+                    "sort": ["Danceability","Energy","Valence","Acousticness","Speechiness","Tempo"]                  
+                },
+                "y": {
+                    "field": "feature_y",
+                    "type": "nominal",
+                    "sort": ["Danceability","Energy","Valence","Acousticness","Speechiness","Tempo"]
+                },
+                "text": {
+                    "field": "correlation",
+                    "type": "quantitative",
+                    "format": ".2f"
+                },
+                "color": {
+                    "condition": {
+                        "test": "abs(datum.correlation) > 0.5",
+                        "value": "white"
+                    },
+                    "value": "#333333"
+                }
+            }
+        }
+    ]
+}

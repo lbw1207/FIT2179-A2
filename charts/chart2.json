@@ -1,0 +1,82 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": {
+        "text": "Malaysia's Updated Top 10 Songs (By 4/30)",
+        "subtitle": "Streams in the most recent chart week — local vs international artists",
+        "fontSize": 16,
+        "subtitleFontSize": 12,
+        "anchor": "start"
+    },
+    "width": 600,
+    "height": 400,
+    "data": {"url": "../data/malaysia_charts.csv"},
+    "transform": [
+        {"filter": "datum.week_date == '2026-04-30'"},
+        {"filter": "datum.rank <= 10"},
+        {"calculate": "datum.streams / 1000000", "as": "streams_millions"}
+    ],
+    "layer": [
+        {
+            "mark": {"type": "bar", "cornerRadiusTopRight": 4, "cornerRadiusTopLeft": 4},
+            "encoding": {
+                "y": {
+                    "field": "track_name",
+                    "type": "nominal",
+                    "sort": {"field": "rank", "order": "ascending"},
+                    "title": null,
+                    "axis": {"labelFontSize": 12}
+                },
+                "x": {
+                    "field": "streams_millions",
+                    "type": "quantitative",
+                    "title": "Streams (Millions)",
+                    "axis": {"grid": false}
+                },
+                "color": {
+                    "field": "artist_type",
+                    "type": "nominal",
+                    "title": "Artist Type",
+                    "scale": {
+                        "domain": ["Local", "International"],
+                        "range": ["#1DB954", "#535353"]
+                    },
+                    "legend": {
+                        "orient": "bottom-right",
+                        "offset": 10
+                    }
+                },
+                "tooltip": [
+                    {"field": "track_name", "title": "Song"},
+                    {"field": "artist_names", "title": "Artist"},
+                    {"field": "artist_type", "title": "Type"},
+                    {"field": "streams", "title": "Streams", "format": ","}
+                ]
+            }
+        },
+        {
+            "mark": {
+                "type": "text",
+                "align": "left",
+                "dx": 5,
+                "fontSize": 11,
+                "color": "#333333"
+            },
+            "encoding": {
+                "y": {
+                    "field": "track_name",
+                    "type": "nominal",
+                    "sort": {"field": "rank", "order": "ascending"}
+                },
+                "x": {
+                    "field": "streams_millions",
+                    "type": "quantitative"
+                },
+                "text": {
+                    "field": "streams_millions",
+                    "type": "quantitative",
+                    "format": ".2f"
+                }
+            }
+        }
+    ]
+}

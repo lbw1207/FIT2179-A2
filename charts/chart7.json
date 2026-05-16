@@ -1,0 +1,150 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": {
+        "text": "The Sound Zones of Malaysian Music",
+        "subtitle": "Each dot is a song. X = danceability, Y = energy, colour = mood (valence), size = popularity",
+        "fontSize": 16,
+        "subtitleFontSize": 12,
+        "anchor": "start"
+    },
+    "width": 550,
+    "height": 500,
+    "data": {"url": "../data/73countries_malaysia.csv"},
+    "transform": [
+        {"filter": "datum.snapshot_date == '2025-06-11'"}
+    ],
+    "layer": [
+        {
+            "mark": {"type": "rect", "opacity": 0.02},
+            "encoding": {
+                "x": {"datum": 0, "type": "quantitative"},
+                "x2": {"datum": 0.5},
+                "y": {"datum": 0.5, "type": "quantitative"},
+                "y2": {"datum": 1},
+                "color": {"value": "#4e79a7"}
+            }
+        },
+        {
+            "mark": {"type": "rect", "opacity": 0.02},
+            "encoding": {
+                "x": {"datum": 0.5, "type": "quantitative"},
+                "x2": {"datum": 1},
+                "y": {"datum": 0.5, "type": "quantitative"},
+                "y2": {"datum": 1},
+                "color": {"value": "#f28e2b"}
+            }
+        },
+        {
+            "mark": {"type": "rect", "opacity": 0.02},
+            "encoding": {
+                "x": {"datum": 0, "type": "quantitative"},
+                "x2": {"datum": 0.5},
+                "y": {"datum": 0, "type": "quantitative"},
+                "y2": {"datum": 0.5},
+                "color": {"value": "#59a14f"}
+            }
+        },
+        {
+            "mark": {"type": "rect", "opacity": 0.02},
+            "encoding": {
+                "x": {"datum": 0.5, "type": "quantitative"},
+                "x2": {"datum": 1},
+                "y": {"datum": 0, "type": "quantitative"},
+                "y2": {"datum": 0.5},
+                "color": {"value": "#e15759"}
+            }
+        },
+        {
+            "mark": {"type": "text", "fontSize": 11, "fontWeight": "bold", "opacity": 0.5},
+            "encoding": {
+                "x": {"datum": 0.25, "type": "quantitative"},
+                "y": {"datum": 0.98, "type": "quantitative"},
+                "text": {"value": "⬆ Intense & Rhythmic"}
+            }
+        },
+        {
+            "mark": {"type": "text", "fontSize": 11, "fontWeight": "bold", "opacity": 0.5},
+            "encoding": {
+                "x": {"datum": 0.75, "type": "quantitative"},
+                "y": {"datum": 0.98, "type": "quantitative"},
+                "text": {"value": "⬆ High Energy Dance"}
+            }
+        },
+        {
+            "mark": {"type": "text", "fontSize": 11, "fontWeight": "bold", "opacity": 0.5},
+            "encoding": {
+                "x": {"datum": 0.25, "type": "quantitative"},
+                "y": {"datum": 0.02, "type": "quantitative"},
+                "text": {"value": "⬇ Chill Vibes"}
+            }
+        },
+        {
+            "mark": {"type": "text", "fontSize": 11, "fontWeight": "bold", "opacity": 0.5},
+            "encoding": {
+                "x": {"datum": 0.75, "type": "quantitative"},
+                "y": {"datum": 0.02, "type": "quantitative"},
+                "text": {"value": "⬇ Feel-Good Dance"}
+            }
+        },
+        {
+            "mark": {"type": "rule", "strokeDash": [4,4], "color": "#aaaaaa", "strokeWidth": 1},
+            "encoding": {"x": {"datum": 0.5, "type": "quantitative"}}
+        },
+        {
+            "mark": {"type": "rule", "strokeDash": [4,4], "color": "#aaaaaa", "strokeWidth": 1},
+            "encoding": {"y": {"datum": 0.5, "type": "quantitative"}}
+        },
+        {
+            "params": [
+                {
+                    "name": "hover",
+                    "select": {"type": "point", "on": "mouseover", "nearest": true}
+                }
+            ],
+            "mark": {"type": "point", "filled": true},
+            "encoding": {
+                "x": {
+                    "field": "danceability",
+                    "type": "quantitative",
+                    "title": "Danceability →",
+                    "scale": {"domain": [0, 1]},
+                    "axis": {"grid": false}
+                },
+                "y": {
+                    "field": "energy",
+                    "type": "quantitative",
+                    "title": "Energy →",
+                    "scale": {"domain": [0, 1]},
+                    "axis": {"grid": false}
+                },
+                "color": {
+                    "field": "valence",
+                    "type": "quantitative",
+                    "title": "Mood (Valence)",
+                    "scale": {"scheme": "redyellowgreen"},
+                    "legend": {"orient": "right", "gradientLength": 120}
+                },
+                "size": {
+                    "field": "popularity",
+                    "type": "quantitative",
+                    "title": "Popularity",
+                    "scale": {"range": [30, 300]},
+                    "legend": {"orient": "right"}
+                },
+                "opacity": {
+                    "condition": {"param": "hover", "value": 1},
+                    "value": 0.6
+                },
+                "tooltip": [
+                    {"field": "name", "title": "Song"},
+                    {"field": "artists", "title": "Artist"},
+                    {"field": "danceability", "title": "Danceability", "format": ".2f"},
+                    {"field": "energy", "title": "Energy", "format": ".2f"},
+                    {"field": "valence", "title": "Mood (Valence)", "format": ".2f"},
+                    {"field": "popularity", "title": "Popularity"}
+                ]
+            }
+        }
+    ],
+    "resolve": {"scale": {"color": "independent", "size": "independent"}}
+}

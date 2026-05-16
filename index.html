@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Malaysia's Soundtrack — FIT2179</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- HERO -->
+  <header class="hero">
+    <h1>Malaysia's <span>Soundtrack</span></h1>
+    <p class="subtitle">
+      What 33 million Malaysians stream, why they love it,
+      and how their taste compares to the world.
+    </p>
+    <p class="meta">FIT2179 Data Visualisation 2</p>
+  </header>
+
+  <!-- SECTION 1 -->
+  <section class="section" id="section1">
+    <div class="container">
+
+      <div class="section-header">
+        <p class="section-number">Section 01</p>
+        <h2>What's Charting in Malaysia?</h2>
+      </div>
+
+      <!-- Section 1 opening narrative -->
+      <p>
+        Every week, Spotify publishes a ranking of the 200 most-streamed songs
+        in Malaysia. Behind these numbers lies a portrait of a nation's mood —
+        what Malaysians reach for when they put on their headphones on the commute
+        to KL Sentral, in mamak stalls, or late at night in their rooms.
+        Over 12 weeks of chart data, three stories emerge: the songs that
+        dominated, the artists who broke through, and how much of it all
+        came from home.
+      </p>
+
+      <!-- Stat boxes -->
+      <div class="stat-row">
+        <div class="stat-box">
+          <div class="stat-number">5</div>
+          <div class="stat-label">Songs tracked weekly in Malaysia's Spotify Top 200</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-number">12</div>
+          <div class="stat-label">Weeks of chart data analysed</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-number">23%</div>
+          <div class="stat-label">Average share of streams going to local Malaysian artists</div>
+        </div>
+      </div>
+
+      <!-- Before chart 1 -->
+      <p>
+        Chart positions are rarely static. A song can rocket from obscurity to
+        number one in a single week, then vanish just as fast. The chart below
+        follows Malaysia's top 10 songs across 12 weeks — watch which songs
+        held firm and which ones faded.
+      </p>
+
+      <!-- Chart 1 — Bump chart (full width) -->
+      <div class="grid-1">
+        <div class="chart-card">
+          <div class="chart-title">Chart Journey — Top 10 Songs Over 12 Weeks</div>
+          <div class="chart-description">
+            Track how Malaysia's favourite songs rose and fell in the rankings.
+            Each line follows one song's journey through the charts.
+          </div>
+          <div id="chart1"></div>
+        </div>
+      </div>
+
+      <!-- After chart 1, before chart 2 -->
+      <p>
+        The bump chart reveals something striking: <strong style="color: #1DB954;">
+        a handful of songs locked in the top 3 for weeks on end</strong>, while
+        the bottom half of the top 10 churned constantly. This week's snapshot
+        below shows exactly who made the cut — and where they came from.
+      </p>
+
+      <!-- Before chart 3 -->
+      <p>
+        Colour tells part of the story — but proportion tells the rest.
+        Malaysian artists consistently appear in the top 10, yet when you
+        zoom out to all 200 songs and count every stream, a different picture
+        emerges. How much of Malaysia's total listening time actually goes to
+        local talent?
+      </p>
+
+      <!-- Chart 2 — full width -->
+      <div class="grid-1">
+        <div class="chart-card">
+          <div class="chart-title">This Week's Top 10</div>
+          <div class="chart-description">
+            The most-streamed songs in Malaysia right now,
+            coloured by local vs international origin.
+          </div>
+          <div id="chart2"></div>
+        </div>
+      </div>
+
+      <!-- Chart 3 — full width below -->
+      <div class="grid-1">
+        <div class="chart-card">
+          <div class="chart-title">Local vs International Streams</div>
+          <div class="chart-description">
+            Each circle = 1% of weekly streams.
+            How much goes to home-grown Malaysian artists?
+          </div>
+          <div id="chart3"></div>
+        </div>
+      </div>
+
+      <!-- After chart 3 -->
+      <p class="caption">
+        Data: Spotify Official Charts, Malaysia Weekly Top 200.
+        Local artists defined as artists born and primarily based in Malaysia.
+      </p>
+
+    </div>
+  </section>
+
+  <!-- SECTION 2 -->
+  <section class="section" id="section2">
+    <div class="container">
+
+      <div class="section-header">
+        <p class="section-number">Section 02</p>
+        <h2>How Far Does Malaysian Taste Travel?</h2>
+      </div>
+
+      <!-- Section 2 opening narrative -->
+      <p>
+        Music has always crossed borders — but streaming has made that crossing
+        instantaneous. A song climbing the charts in Kuala Lumpur today might
+        be doing the same in Manila, Jakarta, or London tomorrow. The question
+        is: does Malaysia move with the global current, or does it carve its
+        own path?
+      </p>
+
+      <!-- Before chart 4 -->
+      <p>
+        The map below measures musical kinship — for each country in the world,
+        it counts how many of their daily top 10 songs overlap with Malaysia's.
+        A high score means similar taste; a low score means musical distance.
+        The results reveal Malaysia's closest sonic neighbours.
+      </p>
+
+      <!-- Chart 4 — Choropleth map (full width) -->
+      <div class="grid-1">
+        <div class="chart-card">
+          <div class="chart-title">Countries That Share Malaysia's Music Taste</div>
+          <div class="chart-description">
+            Darker green = more songs shared with Malaysia's daily top 10.
+            Hover over any country to see the overlap score.
+          </div>
+          <div id="chart4"></div>
+        </div>
+      </div>
+
+      <!-- After chart 4, before chart 5 -->
+      <p>
+        Geography and language shape music taste more than we might expect —
+        Southeast Asian neighbours consistently show the strongest overlap
+        with Malaysia. But the picture gets more nuanced when we look at
+        individual songs. Some of Malaysia's chart favourites are global
+        phenomena; others are uniquely beloved here and almost invisible
+        everywhere else.
+      </p>
+
+      <!-- Before chart 5 -->
+      <p>
+        The connected dot plot below makes this visible. Each line links a
+        song's rank in Malaysia (left, green) to its average rank across all
+        other countries (right, grey). A long line stretching rightward means
+        Malaysia is ahead of the world on that song — loving it before
+        everyone else catches on, or simply loving it more.
+      </p>
+
+      <!-- Before chart 6 intro -->
+      <p>
+        Beyond individual songs, broader trends shape what Malaysia streams.
+        One shift worth examining: over the past 12 weeks, has the share of
+        explicit-content songs in Malaysia's chart grown, shrunk, or stayed
+        steady? The answer may surprise you.
+      </p>
+
+      <!-- Charts 5 and 6 — side by side -->
+      <div class="grid-2">
+        <div class="chart-card">
+          <div class="chart-title">Malaysian Favourites vs Global Hits</div>
+          <div class="chart-description">
+            Left dot = Malaysia rank. Right dot = global average rank.
+            Long lines reveal songs Malaysia loves before — or after — the world.
+          </div>
+          <div id="chart5"></div>
+        </div>
+        <div class="chart-card">
+          <div class="chart-title">Are Charts Getting More Explicit?</div>
+          <div class="chart-description">
+            Weekly share of explicit vs clean songs in Malaysia's Top 200.
+            Is the trend shifting?
+          </div>
+          <div id="chart6"></div>
+        </div>
+      </div>
+
+      <!-- After chart 6 -->
+      <p class="caption">
+        Data: Kaggle — Top Spotify Songs in 73 Countries (asaniczka), filtered to Malaysia.
+        Explicit flag sourced directly from Spotify's track metadata.
+      </p>
+
+    </div>
+  </section>
+
+  <!-- SECTION 3 -->
+  <section class="section" id="section3">
+    <div class="container">
+
+      <div class="section-header">
+        <p class="section-number">Section 03</p>
+        <h2>What Does Malaysia's Music Sound Like?</h2>
+      </div>
+
+      <!-- Section 3 opening narrative -->
+      <p>
+        Charts and rankings tell us what Malaysia listens to — but not why.
+        To understand that, we need to look inside the music itself. Spotify
+        calculates audio features for every song: how danceable it is, how
+        much energy it carries, whether it sounds happy or melancholic.
+        Together, these features paint a sonic portrait of Malaysia's taste.
+      </p>
+
+      <!-- Before chart 7 -->
+      <p>
+        Plot every song in Malaysia's chart by danceability and energy, and
+        four distinct zones emerge. Each zone represents a different emotional
+        and physical experience — from intense and rhythmic to chill and
+        introspective. Where does most of Malaysia's listening cluster?
+        Hover over any dot to find out which song it is.
+      </p>
+
+      <!-- Chart 7 — Scatter plot (full width) -->
+      <div class="grid-1">
+        <div class="chart-card">
+          <div class="chart-title">The Sound Zones of Malaysian Music</div>
+          <div class="chart-description">
+            Each dot = one song. X = danceability, Y = energy,
+            colour = mood, size = popularity. Hover to explore.
+          </div>
+          <div id="chart7"></div>
+        </div>
+      </div>
+
+      <!-- After chart 7, before chart 8 -->
+      <p>
+        The scatter plot hints at Malaysia's preferences — but to see the
+        full picture we need to compare Malaysia's average audio profile
+        against the global average. Think of it as Malaysia's musical DNA
+        versus the world's.
+      </p>
+
+      <!-- After chart 8, before chart 9 -->
+      <p>
+        The radar reveals that <strong style="color: #1DB954;">Malaysia scores
+        higher on danceability than the global average</strong> but sits closer
+        to the middle on energy. One dimension deserves a closer look on its
+        own: valence — the measure of musical happiness. Do Malaysians prefer
+        uplifting music, or do they gravitate toward more melancholic sounds?
+      </p>
+
+      <!-- Before chart 9 -->
+      <p>
+        Unlike a simple average, the distribution below shows the full shape
+        of Malaysia's mood preferences — revealing not just where the centre
+        lies, but how spread out the taste really is.
+      </p>
+
+      <!-- Charts 8 and 9 — side by side -->
+      <div class="grid-2">
+        <div class="chart-card">
+          <div class="chart-title">Malaysia's Musical DNA</div>
+          <div class="chart-description">
+            Malaysia's average audio profile (green) vs global average (grey)
+            across five sonic dimensions.
+          </div>
+          <div id="chart8"></div>
+        </div>
+        <div class="chart-card">
+          <div class="chart-title">Happy or Sad?</div>
+          <div class="chart-description">
+            Distribution of valence scores across Malaysia's chart songs.
+            Where does Malaysia fall on the emotional spectrum?
+          </div>
+          <div id="chart9"></div>
+        </div>
+      </div>
+
+      <!-- After chart 9, before chart 10 -->
+      <p>
+        Malaysia's chart is not a monolith — it contains pop, hip-hop, R&amp;B,
+        Latin, and indie songs, each with their own sonic character. Breaking
+        down audio features by genre reveals just how different these sounds
+        are from each other, even within the same weekly chart.
+      </p>
+
+      <!-- Chart 10 — Small multiples (full width) -->
+      <div class="grid-1">
+        <div class="chart-card">
+          <div class="chart-title">How Different Genres Sound</div>
+          <div class="chart-description">
+            Average audio features broken down by genre for
+            songs appearing in Malaysia's charts.
+          </div>
+          <div id="chart10"></div>
+        </div>
+      </div>
+
+      <!-- After chart 10 -->
+      <p class="caption">
+        Data: Kaggle — Top Spotify Songs in 73 Countries (asaniczka) and
+        Most Streamed Spotify Songs 2023 (nelgiriyewithana).
+        Audio features are calculated by Spotify's audio analysis algorithms.
+      </p>
+
+    </div>
+  </section>
+
+  <!-- SECTION 4 -->
+  <section class="section" id="section4">
+    <div class="container">
+
+      <div class="section-header">
+        <p class="section-number">Section 04</p>
+        <h2>Malaysia vs The World</h2>
+      </div>
+
+      <!-- Section 4 opening narrative -->
+      <p>
+        Every hit song is built from the same raw ingredients — rhythm, energy,
+        mood, acoustics. But not all ingredients mix the same way. Understanding
+        how audio features relate to each other reveals the hidden architecture
+        of popular music — and helps explain why certain songs travel further
+        than others.
+      </p>
+
+      <!-- Before chart 11 -->
+      <p>
+        The correlation matrix below maps the relationship between six audio
+        features across the world's most streamed songs. Blue cells indicate
+        features that tend to rise together; red cells reveal features that
+        pull in opposite directions. The diagonal is always 1.0 — a feature
+        perfectly correlates with itself.
+      </p>
+
+      <!-- Chart 11 — Heatmap (full width) -->
+      <div class="grid-1">
+        <div class="chart-card">
+          <div class="chart-title">How Audio Features Relate to Each Other</div>
+          <div class="chart-description">
+            Correlation matrix of six audio features across the world's
+            most streamed songs. Blue = positive, red = negative relationship.
+          </div>
+          <div id="chart11"></div>
+        </div>
+      </div>
+
+      <!-- After chart 11, before chart 12 -->
+      <p>
+        The strongest pattern jumps out immediately:
+        <strong style="color: #1DB954;">energy and acousticness are strongly
+        negatively correlated</strong> — the louder and more driven a song,
+        the less acoustic it tends to be. This shapes which songs can travel
+        globally versus which stay niche. Now the final question: where do
+        Malaysia's own chart favourites sit within the full global distribution
+        of streaming popularity?
+      </p>
+
+      <!-- Before chart 12 -->
+      <p>
+        Each grey dot below represents one of the world's most streamed songs
+        in 2023, positioned by total streams. Malaysia's current chart
+        favourites are highlighted in green — revealing whether Malaysians
+        are riding the global mainstream or championing songs the rest of
+        the world hasn't fully discovered yet.
+      </p>
+
+      <!-- Chart 12 — Beeswarm (full width) -->
+      <div class="grid-1">
+        <div class="chart-card">
+          <div class="chart-title">Where Malaysia's Favourites Sit Globally</div>
+          <div class="chart-description">
+            Every globally streamed song as a grey dot. Malaysia's chart
+            favourites lit up in green. Hover any dot to explore.
+          </div>
+          <div id="chart12"></div>
+        </div>
+      </div>
+
+      <!-- Closing narrative -->
+      <p>
+        The picture that emerges is of a music market that is deeply connected
+        to global trends — yet unmistakably its own. Malaysia streams the
+        world's biggest hits, but leaves room for local voices, regional
+        sounds, and songs that chart here long before — or long after —
+        they make noise elsewhere. That balance, between the global and the
+        local, is Malaysia's soundtrack.
+      </p>
+
+      <p class="caption">
+        Data: Kaggle — Most Streamed Spotify Songs 2023 (nelgiriyewithana).
+        Popularity scores sourced from Spotify Web API via dataset author.
+      </p>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>
+        <h4>Data Sources</h4>
+        <p>
+          Spotify Official Charts — charts.spotify.com<br>
+          Top Spotify Songs in 73 Countries (asaniczka) —
+          <a href="https://www.kaggle.com/datasets/asaniczka/top-spotify-songs-in-73-countries-daily-updated" target="_blank">kaggle.com</a><br>
+          Most Streamed Spotify Songs 2023 (nelgiriyewithana) —
+          <a href="https://www.kaggle.com/datasets/nelgiriyewithana/top-spotify-songs-2023" target="_blank">kaggle.com</a>
+        </p>
+      </div>
+      <div>
+        <h4>About</h4>
+        <p>
+          Created by Bowen Liu<br>
+          FIT2179 Data Visualisation 2, Monash University Malaysia<br>
+          May 2026<br>
+          AI tools used for grammar checking and code assistance.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ALL CHART EMBEDS -->
+  <script>
+    vegaEmbed('#chart1',  'charts/chart1.json',  {theme: 'dark'});
+    vegaEmbed('#chart2',  'charts/chart2.json',  {theme: 'dark'});
+    vegaEmbed('#chart3',  'charts/chart3.json',  {theme: 'dark'});
+    vegaEmbed('#chart4',  'charts/chart4.json',  {theme: 'dark'});
+    vegaEmbed('#chart5',  'charts/chart5.json',  {theme: 'dark'});
+    vegaEmbed('#chart6',  'charts/chart6.json',  {theme: 'dark'});
+    vegaEmbed('#chart7',  'charts/chart7.json',  {theme: 'dark'});
+    vegaEmbed('#chart8',  'charts/chart8.json',  {theme: 'dark'});
+    vegaEmbed('#chart9',  'charts/chart9.json',  {theme: 'dark'});
+    vegaEmbed('#chart10', 'charts/chart10.json', {theme: 'dark'});
+    vegaEmbed('#chart11', 'charts/chart11.json', {theme: 'dark'});
+    vegaEmbed('#chart12', 'charts/chart12.json', {theme: 'dark'});
+  </script>
+
+</body>
+</html>

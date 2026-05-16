@@ -1,0 +1,58 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": {
+        "text": "How Different Genres Sound in Malaysia's Charts",
+        "subtitle": "Average audio features by genre — each panel shows one feature",
+        "fontSize": 16,
+        "subtitleFontSize": 12,
+        "anchor": "start"
+    },
+    "data": {"url": "../data/genre_audio.csv"},
+    "facet": {
+        "field": "feature",
+        "type": "nominal",
+        "title": null,
+        "columns": 2,
+        "sort": ["Danceability", "Energy", "Valence", "Acousticness", "Speechiness"],
+        "header": {
+            "labelFontSize": 13,
+            "labelFontWeight": "bold"
+        }
+    },
+    "spec": {
+        "width": 230,
+        "height": 200,
+        "mark": {
+            "type": "bar",
+            "cornerRadiusTopRight": 4,
+            "cornerRadiusTopLeft": 4
+        },
+        "encoding": {
+            "x": {
+                "field": "genre",
+                "type": "nominal",
+                "title": null,
+                "sort": ["Acoustic/Folk", "Electronic", "Hip-Hop", "Indie/Alt", "K-Pop", "Pop", "R&B", "Rock"],
+                "axis": {"labelAngle": -30, "labelFontSize": 11}
+            },
+            "y": {
+                "field": "avg_value",
+                "type": "quantitative",
+                "title": "Average Value",
+                "scale": {"domain": [0, 1]},
+                "axis": {"grid": false}
+            },
+            "color": {
+                "field": "genre",
+                "type": "nominal",
+                "legend": null,
+                "scale": {"scheme": "tableau10"}
+            },
+            "tooltip": [
+                {"field": "genre", "title": "Genre"},
+                {"field": "feature", "title": "Feature"},
+                {"field": "avg_value", "title": "Average", "format": ".2f"}
+            ]
+        }
+    }
+}

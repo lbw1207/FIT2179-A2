@@ -1,0 +1,73 @@
+country_id,country_code,country_name,avg_shared_songs
+458,MY,Malaysia,10.0
+702,SG,Singapore,5.2
+682,SA,Saudi Arabia,4.2
+784,AE,United Arab Emirates,4.0
+554,NZ,New Zealand,3.3
+36,AU,Australia,3.1
+826,GB,United Kingdom,3.0
+608,PH,Philippines,2.8
+840,US,United States,2.7
+124,CA,Canada,2.7
+360,ID,Indonesia,2.6
+158,TW,Taiwan,2.5
+442,LU,Luxembourg,2.3
+372,IE,Ireland,2.3
+56,BE,Belgium,2.2
+428,LV,Latvia,2.0
+398,KZ,Kazakhstan,2.0
+756,CH,Switzerland,2.0
+764,TH,Thailand,1.9
+578,NO,Norway,1.9
+528,NL,Netherlands,1.8
+620,PT,Portugal,1.7
+344,HK,Hong Kong,1.7
+233,EE,Estonia,1.6
+410,KR,South Korea,1.5
+40,AT,Austria,1.5
+440,LT,Lithuania,1.4
+352,IS,Iceland,1.4
+704,VN,Vietnam,1.1
+703,SK,Slovakia,1.0
+604,PE,Peru,1.0
+208,DK,Denmark,1.0
+276,DE,Germany,1.0
+68,BO,Bolivia,1.0
+752,SE,Sweden,0.9
+392,JP,Japan,0.8
+376,IL,Israel,0.8
+616,PL,Poland,0.7
+203,CZ,Czech Republic,0.7
+348,HU,Hungary,0.6
+250,FR,France,0.5
+100,BG,Bulgaria,0.5
+710,ZA,South Africa,0.4
+862,VE,Venezuela,0.4
+642,RO,Romania,0.4
+600,PY,Paraguay,0.4
+340,HN,Honduras,0.4
+804,UA,Ukraine,0.3
+222,SV,El Salvador,0.3
+558,NI,Nicaragua,0.3
+356,IN,India,0.3
+152,CL,Chile,0.3
+112,BY,BY,0.3
+76,BR,Brazil,0.2
+591,PA,Panama,0.1
+504,MA,Morocco,0.1
+218,EC,Ecuador,0.1
+188,CR,Costa Rica,0.1
+858,UY,Uruguay,0.0
+792,TR,Turkey,0.0
+586,PK,Pakistan,0.0
+566,NG,Nigeria,0.0
+484,MX,Mexico,0.0
+380,IT,Italy,0.0
+320,GT,Guatemala,0.0
+300,GR,Greece,0.0
+246,FI,Finland,0.0
+724,ES,Spain,0.0
+818,EG,Egypt,0.0
+214,DO,Dominican Republic,0.0
+170,CO,Colombia,0.0
+32,AR,Argentina,0.0

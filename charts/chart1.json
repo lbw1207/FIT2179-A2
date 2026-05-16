@@ -1,0 +1,63 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": {
+        "text": "Malaysia's Top 5 Songs - Chart Journey",
+        "subtitle": "How rankings shifted week by week over 12 weeks",
+        "fontSize": 16,
+        "subtitleFontSize": 12,
+        "anchor": "start"
+    },
+    "width": 700,
+    "height": 400,
+    "data": {"url": "../data/malaysia_charts.csv"},
+    "transform": [
+        {"filter": "datum.rank <= 10"},
+        {
+            "joinaggregate": [{"op": "count", "as": "weeks_on_chart"}],
+            "groupby": ["track_name"]
+        },
+        {"filter": "datum.weeks_on_chart >= 8"}
+    ],
+    "layer": [
+        {
+            "mark": {
+                "type": "line",
+                "point": true,
+                "strokeWidth": 2
+            },
+            "encoding": {
+                "x": {
+                    "field": "week_date",
+                    "type": "ordinal",
+                    "title": "Week",
+                    "axis": {
+                        "labelAngle": -30,
+                        "labelExpr": "timeFormat(toDate(datum.value), '%b %d')"
+                    }
+                },
+                "y": {
+                    "field": "rank",
+                    "type": "quantitative",
+                    "title": "Chart Position",
+                    "scale": {
+                        "domain": [1, 10],
+                        "reverse": true
+                    },
+                    "axis": {"values": [1,2,3,4,5,6,7,8,9,10]}
+                },
+                "color": {
+                    "field": "track_name",
+                    "type": "nominal",
+                    "title": "Song",
+                    "legend": {"orient": "right"}
+                },
+                "tooltip": [
+                    {"field": "track_name", "title": "Song"},
+                    {"field": "artist", "title": "Artist"},
+                    {"field": "rank", "title": "Rank"},
+                    {"field": "week_date", "title": "Week", "type": "temporal", "format": "%b %d %Y"}
+                ]
+            }
+        }
+    ]
+}

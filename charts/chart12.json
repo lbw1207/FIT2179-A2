@@ -1,0 +1,132 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": {
+        "text": "Where Do Malaysia's Favourite Songs Stand Globally?",
+        "subtitle": "Each dot = a song in Malaysia's charts. Green = top 15.",
+        "fontSize": 16,
+        "subtitleFontSize": 12,
+        "anchor": "start"
+    },
+    "width": 650,
+    "height": 300,
+    "layer": [
+        {
+            "data": {"url": "../data/73countries_malaysia.csv"},
+            "transform": [
+                {"filter": "datum.snapshot_date == '2025-06-11'"},
+                {"calculate": "random() * 200 - 100", "as": "jitter"}
+            ],
+            "mark": {"type": "point", "filled": true, "opacity": 0.6, "size": 60},
+            "encoding": {
+                "x": {
+                    "field": "popularity",
+                    "type": "quantitative",
+                    "title": "Popularity Score (0–100)",
+                    "scale": {"domain": [0, 100]},
+                    "axis": {"grid": false}
+                },
+                "y": {
+                    "field": "jitter",
+                    "type": "quantitative",
+                    "title": null,
+                    "axis": null,
+                    "scale": {"domain": [-150, 150]}
+                },
+                "color": {"value": "#bbbbbb"},
+                "tooltip": [
+                    {"field": "name", "title": "Song"},
+                    {"field": "artists", "title": "Artist"},
+                    {"field": "popularity", "title": "Popularity"}
+                ]
+            }
+        },
+        {
+            "data": {"url": "../data/malaysia_highlights.csv"},
+            "transform": [
+                {"calculate": "random() * 60 - 30", "as": "jitter"}
+            ],
+            "mark": {
+                "type": "point",
+                "filled": true,
+                "opacity": 0.95,
+                "size": 150,
+                "stroke": "white",
+                "strokeWidth": 1.5
+            },
+            "encoding": {
+                "x": {
+                    "field": "popularity",
+                    "type": "quantitative",
+                    "scale": {"domain": [0, 100]}
+                },
+                "y": {
+                    "field": "jitter",
+                    "type": "quantitative",
+                    "scale": {"domain": [-150, 150]}
+                },
+                "color": {"value": "#1DB954"},
+                "tooltip": [
+                    {"field": "track_name", "title": "Song"},
+                    {"field": "artist", "title": "Artist"},
+                    {"field": "popularity", "title": "Popularity"},
+                    {"field": "my_rank", "title": "Malaysia Rank"}
+                ]
+            }
+        },
+        {
+            "data": {"url": "../data/malaysia_highlights.csv"},
+            "transform": [
+                {"filter": "datum.my_rank == 1"}
+            ],
+            "mark": {
+                "type": "text",
+                "dy": -16,
+                "fontSize": 10,
+                "fontWeight": "bold",
+                "color": "#1DB954"
+            },
+            "encoding": {
+                "x": {"field": "popularity", "type": "quantitative"},
+                "y": {"datum": 0},
+                "text": {"field": "track_name", "type": "nominal"}
+            }
+        },
+        {
+            "data": {"url": "../data/malaysia_highlights.csv"},
+            "transform": [
+                {"filter": "datum.my_rank == 2"}
+            ],
+            "mark": {
+                "type": "text",
+                "dy": 20,
+                "fontSize": 10,
+                "fontWeight": "bold",
+                "color": "#1DB954"
+            },
+            "encoding": {
+                "x": {"field": "popularity", "type": "quantitative"},
+                "y": {"datum": 0},
+                "text": {"field": "track_name", "type": "nominal"}
+            }
+        },
+        {
+            "data": {"url": "../data/malaysia_highlights.csv"},
+            "transform": [
+                {"filter": "datum.my_rank == 3"}
+            ],
+            "mark": {
+                "type": "text",
+                "dy": -40,
+                "fontSize": 10,
+                "fontWeight": "bold",
+                "color": "#1DB954"
+            },
+            "encoding": {
+                "x": {"field": "popularity", "type": "quantitative"},
+                "y": {"datum": 0},
+                "text": {"field": "track_name", "type": "nominal"}
+            }
+        }
+    ],
+    "resolve": {"scale": {"x": "shared", "y": "shared"}}
+}

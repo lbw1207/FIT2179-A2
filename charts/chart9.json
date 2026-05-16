@@ -1,0 +1,78 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": {
+        "text": "Happy or Sad? The Mood of Malaysia's Chart Songs",
+        "subtitle": "Distribution of valence scores — 0 = sad/tense, 1 = happy/euphoric",
+        "fontSize": 16,
+        "subtitleFontSize": 12,
+        "anchor": "start"
+    },
+    "width": 500,
+    "height": 350,
+    "data": {"url": "../data/73countries_malaysia.csv"},
+    "transform": [
+        {
+            "aggregate": [
+                {"op": "mean", "field": "valence", "as": "valence"}
+            ],
+            "groupby": ["spotify_id"]
+        },
+        {
+            "density": "valence",
+            "bandwidth": 0.05,
+            "as": ["valence_x", "density_y"]
+        }
+    ],
+    "layer": [
+        {
+            "mark": {
+                "type": "area",
+                "opacity": 0.4,
+                "color": "#1DB954",
+                "line": {"color": "#1DB954", "strokeWidth": 2}
+            },
+            "encoding": {
+                "x": {
+                    "field": "valence_x",
+                    "type": "quantitative",
+                    "title": "Valence (Mood) -> Sad",
+                    "scale": {"domain": [0,1]},
+                    "axis": {"grid": false}
+                },
+                "y": {
+                    "field": "density_y",
+                    "type": "quantitative",
+                    "title": "Density",
+                    "axis": {"grid": false}
+                }
+            }
+        },
+        {
+            "mark": {
+                "type": "rule",
+                "strokeDash": [4, 4],
+                "color": "#e15759",
+                "strokeWidth": 2
+            },
+            "encoding": {
+                "x": {"datum": 0.5, "type": "quantitative"}
+            }
+        },
+        {
+            "mark": {
+                "type": "text",
+                "align": "left",
+                "dx": 5,
+                "dy": -10,
+                "color": "#e15759",
+                "fontSize": 11,
+                "fontWeight": "bold"
+            },
+            "encoding": {
+                "x": {"datum": 0.5, "type": "quantitative"},
+                "y": {"datum": 0, "type": "quantitative"},
+                "text": {"value": "← Neutral midpoint"}
+            }
+        }
+    ]
+}
