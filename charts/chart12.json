@@ -74,7 +74,7 @@
             }
         },
         {
-            "data": {"url": "../data/malaysia_highlights.csv"},
+            "data": {"url": "data/malaysia_highlights.csv"},
             "transform": [
                 {"filter": "datum.my_rank == 1"}
             ],
