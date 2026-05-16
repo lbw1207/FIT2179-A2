@@ -7,7 +7,7 @@
         "subtitleFontSize": 12,
         "anchor": "start"
     },
-    "data": {"url": "../data/waffle_data.csv"},
+    "data": {"url": "data/waffle_data.csv"},
     "facet": {
         "field": "week_date",
         "type": "ordinal",
