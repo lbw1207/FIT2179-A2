@@ -9,7 +9,7 @@
     },
     "width": 400,
     "height": 400,
-    "data": {"url": "../data/audio_fingerprint.csv"},
+    "data": {"url": "data/audio_fingerprint.csv"},
     "transform": [
         {"fold": ["malaysia_avg", "global_avg"], "as": ["source", "value"]},
         {"window": [{"op": "rank", "as": "order"}], "groupby": ["source"]},
