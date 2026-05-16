@@ -9,7 +9,7 @@
     },
     "width": 450,
     "height": 450,
-    "data": {"url": "../data/correlation_matrix.csv"},
+    "data": {"url": "data/correlation_matrix.csv"},
     "layer": [
         {
             "mark": "rect",
