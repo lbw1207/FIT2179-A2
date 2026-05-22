@@ -32,7 +32,7 @@
                     "axis": null,
                     "scale": {"domain": [-150, 150]}
                 },
-                "color": {"value": "#bbbbbb"},
+                "color": {"value": "#1a1818"},
                 "tooltip": [
                     {"field": "name", "title": "Song"},
                     {"field": "artists", "title": "Artist"},

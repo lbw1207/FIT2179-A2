@@ -9,13 +9,14 @@
     },
     "width": 550,
     "height": 500,
+    "background": "white",
     "data": {"url": "data/73countries_malaysia.csv"},
     "transform": [
         {"filter": "datum.snapshot_date == '2025-06-11'"}
     ],
     "layer": [
         {
-            "mark": {"type": "rect", "opacity": 0.02},
+            "mark": {"type": "rect", "opacity": 0.06},
             "encoding": {
                 "x": {"datum": 0, "type": "quantitative"},
                 "x2": {"datum": 0.5},
@@ -25,7 +26,7 @@
             }
         },
         {
-            "mark": {"type": "rect", "opacity": 0.02},
+            "mark": {"type": "rect", "opacity": 0.06},
             "encoding": {
                 "x": {"datum": 0.5, "type": "quantitative"},
                 "x2": {"datum": 1},
@@ -35,7 +36,7 @@
             }
         },
         {
-            "mark": {"type": "rect", "opacity": 0.02},
+            "mark": {"type": "rect", "opacity": 0.06},
             "encoding": {
                 "x": {"datum": 0, "type": "quantitative"},
                 "x2": {"datum": 0.5},
@@ -45,7 +46,7 @@
             }
         },
         {
-            "mark": {"type": "rect", "opacity": 0.02},
+            "mark": {"type": "rect", "opacity": 0.06},
             "encoding": {
                 "x": {"datum": 0.5, "type": "quantitative"},
                 "x2": {"datum": 1},
@@ -55,7 +56,7 @@
             }
         },
         {
-            "mark": {"type": "text", "fontSize": 11, "fontWeight": "bold", "opacity": 0.5},
+            "mark": {"type": "text", "fontSize": 11, "fontWeight": "bold", "opacity": 0.4},
             "encoding": {
                 "x": {"datum": 0.25, "type": "quantitative"},
                 "y": {"datum": 0.98, "type": "quantitative"},
@@ -63,7 +64,7 @@
             }
         },
         {
-            "mark": {"type": "text", "fontSize": 11, "fontWeight": "bold", "opacity": 0.5},
+            "mark": {"type": "text", "fontSize": 11, "fontWeight": "bold", "opacity": 0.4},
             "encoding": {
                 "x": {"datum": 0.75, "type": "quantitative"},
                 "y": {"datum": 0.98, "type": "quantitative"},
@@ -71,7 +72,7 @@
             }
         },
         {
-            "mark": {"type": "text", "fontSize": 11, "fontWeight": "bold", "opacity": 0.5},
+            "mark": {"type": "text", "fontSize": 11, "fontWeight": "bold", "opacity": 0.4},
             "encoding": {
                 "x": {"datum": 0.25, "type": "quantitative"},
                 "y": {"datum": 0.02, "type": "quantitative"},
@@ -79,7 +80,7 @@
             }
         },
         {
-            "mark": {"type": "text", "fontSize": 11, "fontWeight": "bold", "opacity": 0.5},
+            "mark": {"type": "text", "fontSize": 11, "fontWeight": "bold", "opacity": 0.4},
             "encoding": {
                 "x": {"datum": 0.75, "type": "quantitative"},
                 "y": {"datum": 0.02, "type": "quantitative"},
@@ -121,19 +122,19 @@
                     "field": "valence",
                     "type": "quantitative",
                     "title": "Mood (Valence)",
-                    "scale": {"scheme": "redyellowgreen"},
+                    "scale": {"scheme": "viridis"},
                     "legend": {"orient": "right", "gradientLength": 120}
                 },
                 "size": {
                     "field": "popularity",
                     "type": "quantitative",
                     "title": "Popularity",
-                    "scale": {"range": [30, 300]},
+                    "scale": {"range": [30, 600]},
                     "legend": {"orient": "right"}
                 },
                 "opacity": {
                     "condition": {"param": "hover", "value": 1},
-                    "value": 0.6
+                    "value": 0.7
                 },
                 "tooltip": [
                     {"field": "name", "title": "Song"},

@@ -12,13 +12,32 @@
     "projection": {"type": "equalEarth"},
     "layer": [
         {
+            "data": {"sphere": true},
+            "mark": {
+                "type": "geoshape",
+                "fill": "#d0e8f5",
+                "stroke": "#a0c8e8",
+                "strokeWidth": 0.5
+            }
+        },
+        {
+            "data": {"graticule": {"step": [30, 30]}},
+            "mark": {
+                "type": "geoshape",
+                "filled": false,
+                "stroke": "#b8d8ee",
+                "strokeWidth": 0.3,
+                "opacity": 0.6
+            }
+        },
+        {
             "data": {
                 "url": "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json",
                 "format": {"type": "topojson", "feature": "countries"}
             },
             "mark": {
                 "type": "geoshape",
-                "fill": "#e0e0e0",
+                "fill": "#e8e8e4",
                 "stroke": "#ffffff",
                 "strokeWidth": 0.5
             }
@@ -34,7 +53,7 @@
                     "from": {
                         "data": {"url": "data/country_overlap.csv"},
                         "key": "country_id",
-                        "fields": ["country_name", "avg_shared_songs", "country_code"]               
+                        "fields": ["country_name", "avg_shared_songs", "country_code"]
                     }
                 },
                 {"filter": "datum.avg_shared_songs != null"}
@@ -56,7 +75,7 @@
                     "legend": {
                         "orient": "bottom-right",
                         "gradientLength": 120,
-                        "title": "Avg. shared Songs"
+                        "title": "Avg. Shared Songs"
                     }
                 },
                 "tooltip": [

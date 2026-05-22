@@ -5,7 +5,9 @@
         "subtitle": "Each circle = 1% of total streams. Green = Malaysian artists, Grey = International",
         "fontSize": 16,
         "subtitleFontSize": 12,
-        "anchor": "start"
+        "anchor": "start",
+        "color": "#111111",
+        "subtitleColor": "#555555"
     },
     "data": {"url": "data/waffle_data.csv"},
     "facet": {
@@ -16,7 +18,8 @@
         "header": {
             "labelExpr": "timeFormat(toDate(datum.value), '%b %d')",
             "labelFontSize": 12,
-            "labelFontWeight": "bold"
+            "labelFontWeight": "bold",
+            "labelColor": "#111111"
         }
     },
     "spec": {
@@ -42,9 +45,14 @@
                 "title": "Artist Type",
                 "scale": {
                     "domain": ["Local", "International"],
-                    "range": ["#1DB954", "#535353"]
+                    "range": ["#1AA34A", "#888888"]
                 },
-                "legend": {"orient": "bottom", "direction": "horizontal"}
+                "legend": {
+                    "orient": "bottom",
+                    "direction": "horizontal",
+                    "labelColor": "#111111",
+                    "titleColor": "#111111"
+                }
             },
             "tooltip": [
                 {"field": "week_date", "title": "Week"},

@@ -1,12 +1,12 @@
 :root {
-  /* Colours */
-  --colour-bg:         #0a0a0a;      /* near-black background */
-  --colour-surface:    #141414;      /* slightly lighter card background */
-  --colour-border:     #2a2a2a;      /* subtle border */
-  --colour-primary:    #1DB954;      /* Spotify green — your accent colour */
-  --colour-text:       #f0f0f0;      /* near-white main text */
-  --colour-muted:      #888888;      /* grey for captions and metadata */
-  --colour-heading:    #ffffff;      /* pure white for headings */
+  /* Colours — light theme */
+  --colour-bg:         #f8f8f6;      /* warm off-white background */
+  --colour-surface:    #ffffff;      /* white card background */
+  --colour-border:     #e0e0dc;      /* subtle warm border */
+  --colour-primary:    #1a9e47;      /* deeper Spotify green for light bg */
+  --colour-text:       #1a1a1a;      /* near-black main text */
+  --colour-muted:      #666666;      /* grey for captions and metadata */
+  --colour-heading:    #0d0d0d;      /* pure dark for headings */
 
   /* Typography */
   --font-heading:      'Playfair Display', Georgia, serif;
@@ -53,9 +53,9 @@ body {
 .hero {
   background: linear-gradient(
     135deg,
-    #0a0a0a 0%,
-    #0f2d1a 50%,
-    #0a0a0a 100%
+    #e8f5ee 0%,
+    #c8ecd6 50%,
+    #e8f5ee 100%
   );
   padding: var(--space-xl) var(--space-md);
   text-align: center;
@@ -135,20 +135,35 @@ body {
   font-style: italic;
 }
 
-.chart-card canvas,
-.chart-card svg {
-    max-width: 100% !important;
-    height: auto !important;
+/* Two-column paragraph for long narrative text */
+.text-2col {
+  max-width: var(--max-width) !important;
+  column-count: 2;
+  column-gap: var(--space-md);
+  column-rule: 1px solid var(--colour-border);
 }
 
-/* Also force vega embed containers to respect width */
+/* Responsive — single column on small screens */
+@media (max-width: 768px) {
+  .text-2col {
+    column-count: 1;
+  }
+}
+
+/* Vega chart responsiveness */
+.chart-card canvas,
+.chart-card svg {
+  max-width: 100% !important;
+  height: auto !important;
+}
+
 .vega-embed {
-    width: 100% !important;
+  width: 100% !important;
 }
 
 .vega-embed canvas,
 .vega-embed svg {
-    max-width: 100% !important;
+  max-width: 100% !important;
 }
 
 .chart-card {
@@ -157,6 +172,7 @@ body {
   border-radius: var(--radius);
   padding: var(--space-md);
   margin-bottom: var(--space-md);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
 }
 
 .chart-title {
@@ -190,7 +206,7 @@ body {
   margin: 0 auto var(--space-md);
 }
 
-/* Stat highlight boxes (for key numbers) */
+/* Stat highlight boxes */
 .stat-row {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -205,6 +221,7 @@ body {
   border-left: 3px solid var(--colour-primary);
   border-radius: var(--radius);
   padding: var(--space-sm) var(--space-md);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
 }
 
 .stat-box .stat-number {

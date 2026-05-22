@@ -5,7 +5,9 @@
         "subtitle": "Streams in the most recent chart week — local vs international artists",
         "fontSize": 16,
         "subtitleFontSize": 12,
-        "anchor": "start"
+        "anchor": "start",
+        "color": "#111111",
+        "subtitleColor": "#555555"
     },
     "width": 600,
     "height": 400,
@@ -24,13 +26,20 @@
                     "type": "nominal",
                     "sort": {"field": "rank", "order": "ascending"},
                     "title": null,
-                    "axis": {"labelFontSize": 12}
+                    "axis": {
+                        "labelFontSize": 12,
+                        "labelColor": "#111111"
+                    }
                 },
                 "x": {
                     "field": "streams_millions",
                     "type": "quantitative",
                     "title": "Streams (Millions)",
-                    "axis": {"grid": false}
+                    "axis": {
+                        "grid": false,
+                        "titleColor": "#111111",
+                        "labelColor": "#111111"
+                    }
                 },
                 "color": {
                     "field": "artist_type",
@@ -38,11 +47,13 @@
                     "title": "Artist Type",
                     "scale": {
                         "domain": ["Local", "International"],
-                        "range": ["#1DB954", "#535353"]
+                        "range": ["#1AA34A", "#888888"]
                     },
                     "legend": {
                         "orient": "bottom-right",
-                        "offset": 10
+                        "offset": 10,
+                        "labelColor": "#111111",
+                        "titleColor": "#111111"
                     }
                 },
                 "tooltip": [

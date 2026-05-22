@@ -5,7 +5,9 @@
         "subtitle": "How rankings shifted week by week over 12 weeks",
         "fontSize": 16,
         "subtitleFontSize": 12,
-        "anchor": "start"
+        "anchor": "start",
+        "color": "#0d0d0d",
+        "subtitleColor": "#666666"
     },
     "width": 700,
     "height": 400,
@@ -32,7 +34,10 @@
                     "title": "Week",
                     "axis": {
                         "labelAngle": -30,
-                        "labelExpr": "timeFormat(toDate(datum.value), '%b %d')"
+                        "labelExpr": "timeFormat(toDate(datum.value), '%b %d')",
+                        "labelColor": "#1a1a1a",
+                        "titleColor": "#1a1a1a",
+                        "gridColor": "#e0e0dc"
                     }
                 },
                 "y": {
@@ -43,17 +48,29 @@
                         "domain": [1, 10],
                         "reverse": true
                     },
-                    "axis": {"values": [1,2,3,4,5,6,7,8,9,10]}
+                    "axis": {
+                        "values": [1,2,3,4,5,6,7,8,9,10],
+                        "labelColor": "#1a1a1a",
+                        "titleColor": "#1a1a1a",
+                        "gridColor": "#e0e0dc"
+                    }
                 },
                 "color": {
                     "field": "track_name",
                     "type": "nominal",
                     "title": "Song",
-                    "legend": {"orient": "right"}
+                    "scale": {
+                        "range": ["#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7", "#000000"]
+                    },
+                    "legend": {
+                        "orient": "right",
+                        "labelColor": "#1a1a1a",
+                        "titleColor": "#1a1a1a"
+                    }
                 },
                 "tooltip": [
                     {"field": "track_name", "title": "Song"},
-                    {"field": "artist", "title": "Artist"},
+                    {"field": "artist_names", "title": "Artist"},
                     {"field": "rank", "title": "Rank"},
                     {"field": "week_date", "title": "Week", "type": "temporal", "format": "%b %d %Y"}
                 ]
